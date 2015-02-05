@@ -4,9 +4,6 @@ TEMPLATE = subdirs
 
 # Copy Qt runtime libraries into the build directory (to run or package)
 equals(copyqt, 1) {
-
-GCS_LIBRARY_PATH
-
     linux-* {
 
         QT_LIBS = libQt5Core.so.5 \
@@ -112,9 +109,6 @@ GCS_LIBRARY_PATH
         for(lib, QT_QUICK2_DLLS) {
             data_copy.commands += $(COPY_FILE) $$targetPath(\"$$[QT_INSTALL_QML]/$$lib\") $$targetPath(\"$$GCS_QT_QML_PATH/$$lib\") $$addNewline()
         }
-
-        data_copy.target = FORCE
-        QMAKE_EXTRA_TARGETS += data_copy
     }
 
     win32 {
@@ -242,9 +236,6 @@ GCS_LIBRARY_PATH
         for(dll, OPENGL_DLLS) {
             data_copy.commands += $(COPY_FILE) $$targetPath(\"$${MESAWIN_DIR}/$$dll\") $$targetPath(\"$$GCS_APP_PATH/$$dll\") $$addNewline()
         }
-
-        data_copy.target = FORCE
-        QMAKE_EXTRA_TARGETS += data_copy
     }
 
 
@@ -269,8 +260,8 @@ GCS_LIBRARY_PATH
             data_copy.commands += $(COPY_FILE) $$targetPath(\"$$[QT_INSTALL_QML]/$$lib/plugins.qmltypes\") $$targetPath(\"$$GCS_QT_QML_PATH/$$lib/plugins.qmltypes\") $$addNewline()
             data_copy.commands += $(COPY_FILE) $$targetPath(\"$$[QT_INSTALL_QML]/$$lib/qmldir\") $$targetPath(\"$$GCS_QT_QML_PATH/$$lib/qmldir\") $$addNewline()
         }
-
-        data_copy.target = FORCE
-        QMAKE_EXTRA_TARGETS += data_copy
     }
+
+    data_copy.target = FORCE
+    QMAKE_EXTRA_TARGETS += data_copy
 }
