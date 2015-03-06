@@ -131,7 +131,8 @@ HEADERS += \
     $$UAVOBJECT_SYNTHETICS/auxmagsettings.h \
     $$UAVOBJECT_SYNTHETICS/gpsextendedstatus.h \
     $$UAVOBJECT_SYNTHETICS/perfcounter.h \
-    $$UAVOBJECT_SYNTHETICS/flashfsstats.h
+    $$UAVOBJECT_SYNTHETICS/flashfsstats.h \
+    $$UAVOBJECT_SYNTHETICS/sync.h
 
 SOURCES += \
     $$UAVOBJECT_SYNTHETICS/vtolselftuningstats.cpp \
@@ -239,5 +240,6 @@ SOURCES += \
     $$UAVOBJECT_SYNTHETICS/auxmagsettings.cpp \
     $$UAVOBJECT_SYNTHETICS/gpsextendedstatus.cpp \
     $$UAVOBJECT_SYNTHETICS/perfcounter.cpp \
-    $$UAVOBJECT_SYNTHETICS/flashfsstats.cpp
+    $$UAVOBJECT_SYNTHETICS/flashfsstats.cpp \
+    $$UAVOBJECT_SYNTHETICS/sync.cpp
 
