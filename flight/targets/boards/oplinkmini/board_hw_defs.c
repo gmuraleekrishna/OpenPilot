@@ -134,15 +134,15 @@ const struct pios_gpio_cfg *PIOS_BOARD_HW_DEFS_GetLedCfg(__attribute__((unused))
 
 static const struct pios_flash_internal_cfg flash_internal_cfg = {};
 
-static const struct flashfs_logfs_cfg flashfs_internal_cfg = {
-    .fs_magic      = 0x99abcfef,
-    .total_fs_size = EE_BANK_SIZE, /* 2K bytes (2x1KB sectors) */
-    .arena_size    = 0x00002000, /* 4 * slot size = 1K bytes = 1 sector */
-    .slot_size     = 0x00000100, /* 256 bytes */
-
-    .start_offset  = EE_BANK_BASE, /* start after the bootloader */
-    .sector_size   = 0x00000400, /* 1K bytes */
-    .page_size     = 0x00000400, /* 1K bytes */
+static const struct flashfs_cfg flashfs_internal_cfg = {
+    .flashfs_magic          = 0x99abcfef,
+    .physical_size          = EE_BANK_SIZE, /* 16KBytes */
+    .physical_erase_block   = 0x400,
+    .physical_addr          = EE_BANK_BASE, /* start after the bootloader */
+    .logical_block_size     = 0x400,
+    .logical_page_size      = 0x100,
+    .work_buffer_size       = (0x100*2),
+    .cache_buffer_size      = (0x100+32)*8,
 };
 
 #include "pios_flash.h"

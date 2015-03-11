@@ -79,6 +79,7 @@ uint8_t *pios_uart_tx_buffer;
 
 uintptr_t pios_uavo_settings_fs_id;
 uintptr_t pios_user_fs_id = 0;
+uintptr_t pios_flashfs_id = 0;
 
 uint8_t servo_count = 0;
 
@@ -98,7 +99,10 @@ void PIOS_Board_Init(void)
 #ifdef PIOS_INCLUDE_FLASH_LOGFS_SETTINGS
     uintptr_t flash_id;
     PIOS_Flash_Internal_Init(&flash_id, &flash_internal_cfg);
-    PIOS_FLASHFS_Logfs_Init(&pios_uavo_settings_fs_id, &flashfs_internal_cfg, &pios_internal_flash_driver, flash_id);
+    //PIOS_FLASHFS_Logfs_Init(&pios_uavo_settings_fs_id, &flashfs_internal_cfg, &pios_internal_flash_driver, flash_id);
+    if (PIOS_FLASHFS_Init(&pios_flashfs_id, &flashfs_internal_cfg, &pios_internal_flash_driver, flash_id)) {
+            PIOS_DEBUG_Assert(0);
+    }
 #endif
 
     /* Initialize the task monitor */

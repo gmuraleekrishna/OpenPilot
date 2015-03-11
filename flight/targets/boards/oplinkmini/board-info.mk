@@ -12,6 +12,8 @@ MODEL_SUFFIX        := _PX
 OPENOCD_JTAG_CONFIG := stlink-v2.cfg
 OPENOCD_CONFIG      := stm32f1x.stlink.cfg
 
+USE_SPIFFS          := YES
+
 # Flash memory map for OPLM:
 # Sector	start			size	use
 # 0		0x0800 0000		1k		BL
@@ -21,8 +23,8 @@ OPENOCD_CONFIG      := stm32f1x.stlink.cfg
 # 11		0x0800 3000		1k		FW
 # 12		0x0800 1000		1k		FW
 # ..		..
-# 125 		0x0801 F400		1k		FW
-# 126 		0x0801 F800		1k		EE
+# 111 		0x0801 BC00		1k		FW
+# 112 		0x0801 C000		1k		EE
 # 127 		0x0801 FC00		1k		EE
 
 
